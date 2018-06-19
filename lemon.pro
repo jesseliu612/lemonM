@@ -21,6 +21,8 @@ QT       += core gui network
 TARGET = lemon
 TEMPLATE = app
 
+CONFIG += static
+
 SOURCES += main.cpp \
     lemon.cpp \
     contest.cpp \

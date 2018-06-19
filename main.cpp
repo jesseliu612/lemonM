@@ -23,7 +23,13 @@
 
 int main(int argc, char *argv[])
 {
+#ifdef Q_WS_X11
+    qputenv("LIBOVERLAY_SCROLLBAR", 0);
+#endif
+
     QtSingleApplication a(argc, argv);
+
+    //a.setStyle(new QCleanlooksStyle());
     
     if (a.sendMessage("")) {
         a.activateWindow();
@@ -43,6 +49,8 @@ int main(int argc, char *argv[])
     a.setActivationWindow(&w);
     
     w.show();
+    w.move ((QApplication::desktop()->width() - w.width())/2,(QApplication::desktop()->height() - w.height())/2);
+
     screen.finish(&w);
     w.welcome();
     
